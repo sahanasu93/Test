@@ -1,7 +1,4 @@
 # Node.js with React
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
 # Build a Node.js project that uses React.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -23,12 +20,26 @@ steps:
     targetType: 'inline'
     script: 'npm install'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'Test'
+    organization: 'sahanaumesh'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'Test17'
+    cliProjectName: 'Sample'
+    cliSources: '.'
 
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: 'npm run build.azure'
 
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)/build'
