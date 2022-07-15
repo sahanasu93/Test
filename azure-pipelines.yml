@@ -4,49 +4,26 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 trigger:
 - master
-
 pool:
   Test
-
 steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
-
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: 'npm install'
-
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'TestSonarCloud'
-    organization: 'sahanaumesh'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'Test17'
-    cliProjectName: 'Sample'
-    cliSources: '.'
-
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: 'npm run build.azure'
-
-- task: SonarCloudAnalyze@1
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-  displayName: 'SonarCloud'
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)/build'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
