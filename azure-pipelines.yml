@@ -26,8 +26,8 @@ steps:
     organization: 'sahanaumesh07'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'Sonarcloudtest'
-    cliProjectName: 'sahanaumesh07'
+    cliProjectKey: 'Test17'
+    cliProjectName: 'sahanasu93'
     cliSources: '.'
 
 - task: SonarCloudAnalyze@1
