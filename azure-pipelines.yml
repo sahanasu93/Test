@@ -22,7 +22,7 @@ steps:
 
 - task: SonarCloudPrepare@1
   inputs:
-    SonarCloud: 'Test'
+    SonarCloud: 'TestSonarCloud'
     organization: 'sahanaumesh'
     scannerMode: 'CLI'
     configMode: 'manual'
