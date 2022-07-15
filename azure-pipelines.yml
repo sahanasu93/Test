@@ -5,7 +5,7 @@
 trigger:
 - master
 pool:
-  Azure Pipelines
+  Test
 steps:
 - task: NodeTool@0
   inputs:
@@ -23,11 +23,11 @@ steps:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'Test'
-    organization: 'sahanaumesh'
+    organization: 'sahanaumesh07'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'Test17'
-    cliProjectName: 'sahanasu93'
+    cliProjectKey: 'Sonarcloudtest'
+    cliProjectName: 'sahanaumesh07'
     cliSources: '.'
 
 - task: SonarCloudAnalyze@1
