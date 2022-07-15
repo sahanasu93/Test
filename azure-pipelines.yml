@@ -5,7 +5,7 @@
 trigger:
 - master
 pool:
-  Test
+  Default
 steps:
 - task: NodeTool@0
   inputs:
