@@ -19,13 +19,19 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'npm run build.azure'
-- task: CopyFiles@2
+
+- task: SonarCloudPrepare@1
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/build'
-    Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: PublishBuildArtifacts@1
+    SonarCloud: 'TestSonarCloud'
+    organization: 'sahanaumesh'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'Test17'
+    cliProjectName: 'sahanasu93'
+    cliSources: '.'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'quizapp'
-    publishLocation: 'Container'
+    pollingTimeoutSec: '300'
