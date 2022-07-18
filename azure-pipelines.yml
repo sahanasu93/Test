@@ -27,7 +27,7 @@ steps:
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: 'Sonarcloudtest'
-    cliProjectName: 'Test'
+    cliProjectName: 'Sample'
     cliSources: '.'
 
 - task: SonarCloudAnalyze@1
