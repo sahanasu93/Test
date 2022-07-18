@@ -23,11 +23,11 @@ steps:
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'Test'
-    organization: 'sahanaumesh'
+    organization: 'sahanaumesh07'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'Test17'
-    cliProjectName: 'Test'
+    cliProjectKey: 'Sonarcloudtest'
+    cliProjectName: 'Sonarcloudtest'
     cliSources: '.'
 
 - task: SonarCloudAnalyze@1
